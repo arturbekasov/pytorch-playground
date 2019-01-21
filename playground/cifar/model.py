@@ -3,7 +3,7 @@ import torch.utils.model_zoo as model_zoo
 from IPython import embed
 from collections import OrderedDict
 
-from utee import misc
+from playground.utee import misc
 print = misc.logger.info
 
 model_urls = {
