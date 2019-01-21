@@ -1,4 +1,3 @@
-import cv2
 import os
 import shutil
 import pickle as pkl
@@ -117,6 +116,7 @@ def model_snapshot(model, new_file, old_file=None, verbose=False):
 def load_lmdb(lmdb_file, n_records=None):
     import lmdb
     import numpy as np
+    import cv2
     lmdb_file = expand_user(lmdb_file)
     if os.path.exists(lmdb_file):
         data = []
@@ -139,9 +139,11 @@ def load_lmdb(lmdb_file, n_records=None):
         print("Not found lmdb file".format(lmdb_file))
 
 def str2img(str_b):
+    import cv2
     return cv2.imdecode(np.fromstring(str_b, np.uint8), cv2.IMREAD_COLOR)
 
 def img2str(img):
+    import cv2
     return cv2.imencode('.jpg', img)[1].tostring()
 
 def md5(s):
